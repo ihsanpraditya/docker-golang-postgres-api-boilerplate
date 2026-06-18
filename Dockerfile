@@ -8,5 +8,3 @@ COPY go.mod go.su[m] ./
 RUN go mod download
 
 EXPOSE 8080
-
-CMD ["air"]

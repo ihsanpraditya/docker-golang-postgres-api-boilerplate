@@ -2,8 +2,11 @@ package config
 
 import (
 	"fmt"
+	"log"
 	"os"
-	"my-api-boilerplate/models"
+	// "my-api-boilerplate/models"
+	"github.com/golang-migrate/migrate/v4"
+	"github.com/golang-migrate/migrate/v4/database/postgres"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )
@@ -23,12 +26,13 @@ func ConnectDatabase() {
 	if err != nil {
 		panic("Failed to connect to database: " + err.Error())
 	}
+	log.Println("Connected to database.")
 
 	// Auto-migrate our model structure
-	err = database.AutoMigrate(&models.Book{})
-	if err != nil {
-		panic("Database migration failed: " + err.Error())
-	}
+	// err = database.AutoMigrate(&models.User{})
+	// if err != nil {
+	// 	panic("Database migration failed: " + err.Error())
+	// }
 
 	DB = database
 }
