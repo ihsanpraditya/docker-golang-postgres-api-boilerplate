@@ -1,4 +1,4 @@
-package config
+package database
 
 import (
 	"fmt"
@@ -7,24 +7,25 @@ import (
 
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
+	"github.com/ihsanpraditya/docker-golang-postgres-api-boilerplate/internal/config"
 )
 
 var DB *gorm.DB
 
-func ConnectDatabase() {
+func ConnectDatabase(cfg config.DatabaseConfig) {
 	dsn := fmt.Sprintf("host=%s user=%s password=%s dbname=%s port=%s sslmode=disable",
-		os.Getenv("DB_HOST"),
-		os.Getenv("DB_USER"),
-		os.Getenv("DB_PASSWORD"),
-		os.Getenv("DB_NAME"),
-		os.Getenv("DB_PORT"),
+		cfg.Host,
+        cfg.User,
+        cfg.Password,
+        cfg.Name,
+        cfg.Port,
 	)
 
 	database, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
 	if err != nil {
 		panic("Failed to connect to database: " + err.Error())
 	}
-	log.Println("Connected to database.")
 
+	log.Println("Connected to database.")
 	DB = database
 }

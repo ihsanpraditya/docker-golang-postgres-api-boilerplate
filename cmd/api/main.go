@@ -1,18 +1,20 @@
 package main
-package main
 
 import (
-	"my-api-boilerplate/config"
-	"my-api-boilerplate/routes"
-	"os"
+	"github.com/gin-gonic/gin"
+	"github.com/ihsanpraditya/docker-golang-postgres-api-boilerplate/internal/config"
+	"github.com/ihsanpraditya/docker-golang-postgres-api-boilerplate/internal/database"
+	"github.com/ihsanpraditya/docker-golang-postgres-api-boilerplate/internal/router"
 )
 
 func main() {
-	config.ConnectDatabase()
+	cfg := config.LoadConfig()
 
-	// Setup routes
-	r := routes.SetupRouter()
+	database.ConnectDatabase(cfg.DB)
 
-	// Start server on container port 8080
+	r := gin.Default()
+
+	router.SetupRouter(r)
+
 	r.Run(":8080")
 }

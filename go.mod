@@ -1,4 +1,4 @@
-module my-api-boilerplate
+module github.com/ihsanpraditya/docker-golang-postgres-api-boilerplate
 
 go 1.26
 
