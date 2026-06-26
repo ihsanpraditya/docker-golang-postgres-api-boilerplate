@@ -1,4 +1,4 @@
-> **Discontinued** beralih ke [Git Clean 01](https://github.com/ihsanpraditya/gin-clean-1).
+> **Discontinued** beralih ke [Gin Clean 01](https://github.com/ihsanpraditya/gin-clean-1).
 
 Boilerplate yang masih belum rapih untuk Gin RESTful API dengan Docker, menggunakan:  
 1. [GORM](https://gorm.io/)
